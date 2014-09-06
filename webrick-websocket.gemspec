@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = WEBrick::Websocket::VERSION
   spec.authors       = ['Kilobyte22']
   spec.email         = ['stiepen22@gmx.de']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ''
+  spec.summary       = 'An extension for WEBrick to support websockets'
+  spec.description   = ''
+  spec.homepage      = 'https://github.com/Kilobyte22/webrick-websocket'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

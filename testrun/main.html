@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>fag</title>
+    <script src="/jquery.min.js"></script>
+    <script src="/jquery-websocket.js"></script>
+    <script>
+        function start() {
+            sock = $.websocket(
+                    'ws://localhost:3000/sock', {
+                        events: {
+                            lol: function(wat) {
+                                alert(wat.data.data);
+                            }
+                        },
+                        open: function(message) {
+                            console.log('Connected!');
+                        }
+                    });
+        }
+        function send(message) {
+            sock.send('lol', {data: message})
+        }
+    </script>
+</head>
+<body>
+wat
+</body>
+</html>

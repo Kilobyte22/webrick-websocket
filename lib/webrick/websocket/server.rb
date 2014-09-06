@@ -1,5 +1,6 @@
 require 'digest/sha1'
 require 'webrick/websocket/socket'
+require 'webrick/websocket/servlet'
 
 module WEBrick
   module Websocket
@@ -26,7 +27,7 @@ module WEBrick
         req.path_info = path_info
         si = servlet.get_instance(self, *options)
         @logger.debug(format("%s is invoked.", si.class.name))
-        if req['upgrade'] == 'websocket'
+        if req['upgrade'] == 'websocket' && si.is_a?(Servlet)
           req.header.each do |k, v|
             puts "#{k} -> #{v}"
           end

@@ -22,7 +22,7 @@ class MyServlet < WEBrick::Websocket::Servlet
   def socket_open(sock)
     # optional
     sock.puts 'Welcome' # send a text frame
-  def
+  end
   
   def socket_close(sock)
     puts 'Poof. Socket gone.'

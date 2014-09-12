@@ -4,11 +4,7 @@ require_relative '../lib/webrick/websocket'
 
 serv = WEBrick::Websocket::HTTPServer.new(Port: 3000, DocumentRoot: File.dirname(__FILE__), Logger: (WEBrick::Log.new nil, WEBrick::BasicLog::DEBUG))
 
-class SocketServlet < WEBrick::HTTPServlet::AbstractServlet
-  def select_protocol(input)
-    puts input.inspect
-    input.first
-  end
+class SocketServlet < WEBrick::Websocket::Servlet
 
   def socket_text(sock, data)
     puts data

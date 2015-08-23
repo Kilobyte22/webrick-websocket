@@ -38,7 +38,7 @@ module WEBrick
           res.send_header(req.socket)
           sock = WEBrick::Websocket::Socket.new(req.socket, si, @logger)
           sock.run
-          res.request_line = nil
+          req.request_line = nil
         else
           si.service(req, res)
         end

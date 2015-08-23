@@ -67,7 +67,6 @@ module WEBrick
 
       def write(sock)
         head = 0b10000000 + @@ops_rev[@op]
-        puts head.to_s(2)
         sock.write([head].pack('C'))
         @len = @payload.length
         lendata = if @len > 125

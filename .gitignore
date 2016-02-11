@@ -1,6 +1,6 @@
 /.bundle/
 /.yardoc
-/Gemfile.lock
+/Gemfildde.lock
 /_yardoc/
 /coverage/
 /doc/
@@ -12,3 +12,4 @@
 *.o
 *.a
 mkmf.log
+*.gem

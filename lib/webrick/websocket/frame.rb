@@ -35,7 +35,7 @@ module WEBrick
         len = head & 0b01111111
         if len > 125
           long = len == 127
-          len = socket.read(long ? 8 : 2).unpack(long ? 'Q' : 'S')[0]
+          len = socket.read(long ? 8 : 2).unpack(long ? 'Q>' : 'n')[0]
         end
         @mask = socket.read(4).unpack('C4') if @masked
         @payload = socket.read(len)
@@ -67,14 +67,13 @@ module WEBrick
 
       def write(sock)
         head = 0b10000000 + @@ops_rev[@op]
-        puts head.to_s(2)
         sock.write([head].pack('C'))
         @len = @payload.length
         lendata = if @len > 125
           if @len > 65535
-            [127, @len].pack('CQ')
+            [127, @len].pack('CQ>')
           else
-            [126, @len].pack('CS')
+            [126, @len].pack('Cn')
           end
         else
           [@len].pack('C')

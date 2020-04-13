@@ -27,7 +27,7 @@ module WEBrick
         req.path_info = path_info
         si = servlet.get_instance(self, *options)
         @logger.debug(format("%s is invoked.", si.class.name))
-        if req['upgrade'] == 'websocket' && si.is_a?(Servlet)
+        if req['upgrade'].casecmp?('websocket') && si.is_a?(Servlet)
           res.status = 101
           key = req['Sec-WebSocket-Key']
           res['Sec-WebSocket-Accept'] = Digest::SHA1.base64digest(key + '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')
